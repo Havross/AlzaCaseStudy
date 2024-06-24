@@ -20,7 +20,6 @@ namespace AlzaCaseStudy
         private StringBuilder stringBuilder; 
         private ILogger _logger;
         private HttpClient _client;
-        //pozice: java-developer- specialista-prodeje-praha specialista-call-centra-trinec tester-webovych-aplikaci?country=sk       
 
         public string ParseUri(string uri)
         {
@@ -104,7 +103,7 @@ namespace AlzaCaseStudy
                 .Any(item => item.SubContent.Any(subContent => !string.IsNullOrEmpty(subContent)));
             Assert.IsTrue(pass);
             _logger.Information($"Finished asserting.");
-            //foreach pro zapis do sb
+
             stringBuilder.AppendLine("Position description: ");
             foreach (var item in positionDescItems.Response.items)
             {
@@ -128,6 +127,7 @@ namespace AlzaCaseStudy
             Assert.IsNotNull(positionData.Response.PlaceOfEmplyment);
             Assert.IsNotNull(positionData.Response.Department.Name);
             _logger.Information($"Finished asserting.");
+
             stringBuilder.AppendLine($"Place Of Emplyment: {positionData.Response.PlaceOfEmplyment}");
             _logger.Information("Place of employment test finished");
         }
@@ -185,6 +185,7 @@ namespace AlzaCaseStudy
             Assert.IsNotNull(positionData.Response);
             Assert.IsNotNull(positionData.Response.ForStudents);
             _logger.Information($"Finished asserting.");
+
             stringBuilder.AppendLine($"Suitable for students: {positionData.Response.ForStudents}");
             _logger.Information("Students test finished");
         }        
