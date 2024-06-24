@@ -65,11 +65,11 @@ namespace AlzaCaseStudy
         {
             _client = new HttpClient();
             _client.BaseAddress = new Uri(Consts.BASE_API_URI);
+            stringBuilder = new StringBuilder();
             if (!File.Exists(Consts.CONFIG_PATH))
                 return;
             var conf = new ConfigurationBuilder().AddJsonFile(Consts.CONFIG_PATH).Build();
-            _logger = new LoggerConfiguration().ReadFrom.Configuration(conf).CreateLogger() as ILogger;
-            stringBuilder = new StringBuilder();
+            _logger = new LoggerConfiguration().ReadFrom.Configuration(conf).CreateLogger() as ILogger;            
             Log.Logger = _logger;
         }        
 
